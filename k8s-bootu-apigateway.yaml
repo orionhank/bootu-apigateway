@@ -30,4 +30,10 @@ spec:
         image: orionhank/bootu-apigateway:latest
         ports:
         - containerPort: 8080
-
+        resources:
+          requests:
+            memory: "700Mi"
+            cpu: "500m"
+          limits:
+            memory: "800Mi"
+            cpu: "600m"

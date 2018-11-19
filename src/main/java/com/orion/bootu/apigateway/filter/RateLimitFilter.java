@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RateLimitFilter extends ZuulFilter {
 
-    private static final RateLimiter RATE_LIMTER = RateLimiter.create(10);
+    private static final RateLimiter RATE_LIMTER = RateLimiter.create(5000);
 
     @Override
     public String filterType() {
@@ -33,7 +33,7 @@ public class RateLimitFilter extends ZuulFilter {
         RequestContext requestContext = RequestContext.getCurrentContext();
         if (!RATE_LIMTER.tryAcquire()) {
             requestContext.setSendZuulResponse(false);
-            requestContext.setResponseStatusCode(HttpStatus.BAD_REQUEST.value());
+            requestContext.setResponseStatusCode(HttpStatus.TOO_MANY_REQUESTS.value());
         }
         return null;
     }

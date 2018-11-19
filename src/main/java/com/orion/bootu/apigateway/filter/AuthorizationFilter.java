@@ -33,7 +33,7 @@ public class AuthorizationFilter extends ZuulFilter {
     public Object run() throws ZuulException {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
-        log.info("AuthorizationFilter - Request URL - [{}]", request.getRequestURL());
+        // log.info("AuthorizationFilter - Request URL - [{}]", request.getRequestURL());
 
         return null;
     }
